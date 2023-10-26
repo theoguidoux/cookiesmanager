@@ -1,0 +1,7 @@
+displayName: Cookies Manager
+type: middleware
+import: github.com/theoguidoux/cookiesmanager
+summary: |
+  Update, Add or Remove cookies of Traefik requests.
+testData:
+  keepCookies: []

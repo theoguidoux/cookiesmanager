@@ -1,0 +1,28 @@
+http:
+  routers:
+    my-router:
+      rule: host(`localhost`)
+      service: service-foo
+      entryPoints:
+        - web
+      middlewares:
+        - cookiesmanager
+
+  services:
+   service-foo:
+      loadBalancer:
+        servers:
+          - url: http://whoami:8000
+  
+  middlewares:
+    cookiesmanager:
+      plugin:
+        cookiesmanager:
+          adder:
+            - name: cookie1
+              value: "foo=bar"
+            - name: "SameSite"
+              value: "none"
+          remover:
+            - name: "cookie2"
+              value: "foo=bar"
