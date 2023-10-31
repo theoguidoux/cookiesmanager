@@ -21,8 +21,16 @@ http:
           adder:
             - name: cookie1
               value: "foo=bar"
-            - name: "SameSite"
-              value: "none"
+            - name: sess
+              secure: true
+              httpOnly: true
+              sameSite: "none"
+              path: /
+              domain: localhost
+              maxAge: 3600
+
           remover:
             - name: "cookie2"
               value: "foo=bar"
+              sameSite: "none"
+              headerName: Set-Cookie
